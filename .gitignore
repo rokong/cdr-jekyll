@@ -1,4 +1,8 @@
 .idea
+cdr-config.yaml
 
 cdr-data/
 !cdr-data/.gitkeep
+
+bundle/
+!bundle/.gitkeep

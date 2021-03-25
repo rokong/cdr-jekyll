@@ -12,4 +12,9 @@
 
 ### pull jekyll repository
 
-### 
+### symbolic link
+```bash
+# bundle directories
+$ ln -s ~/gems/gems/ bundle/
+$ ln -s ~/gems/cache/ bundle/
+```

@@ -9,34 +9,38 @@ services:
       context: .
       dockerfile: ./cdr.Dockerfile
     volumes:
-        # dood
+       # dood
       - /var/run/docker.sock:/var/run/docker.sock
-        # data (extensions, settings etc)
+       # data (extensions, settings etc)
       - ./cdr-data:/home/coder/.local/share/code-server
-        # jekyll project
+       # jekyll project
       - ../rokong.github.io:/home/coder/rokong.github.io
     ports:
       - 127.0.0.1:8081:8080
     networks:
-      intranet: 
+      intranet:
         ipv4_address: 172.18.0.11
 
   # blog
   jekyll:
     environment:
       TZ: "Asia/Seoul"
-#    build:
-#      context: .
-#      dockerfile: ./jekyll.Dockerfile
-    image: jekyll/jekyll:4.2.0
+    build:
+      context: .
+      dockerfile: ./jekyll.Dockerfile
     volumes:
         # jekyll project
-      - ../rokong.github.io:/srv/jekyll
+        - ../rokong.github.io:/srv/jekyll
+        # bundle directory
+        - ./bundle/gems:/usr/local/bundle/gems
+        - ./bundle/cache:/usr/local/bundle/cache
     ports:
       - 127.0.0.1:8082:4000
     networks:
       intranet:
         ipv4_address: 172.18.0.12
+    stdin_open: true
+    tty: true
 
 networks:
   intranet:
