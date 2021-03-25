@@ -1,0 +1,4 @@
+.idea
+
+cdr-data/
+!cdr-data/.gitkeep
